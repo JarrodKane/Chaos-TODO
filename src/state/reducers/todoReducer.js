@@ -1,5 +1,12 @@
-export default (state = {}, action) => {
+const initialState = {
+  input: "",
+  todoList: []
+};
+
+export default (state = initialState, action) => {
   switch (action.type) {
+    case "INPUT_CHANGE":
+      return { ...state, input: action.payload };
     case "ADD_TODO":
       return {
         result: action.payload

@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
+import TodoForm from "./TodoForm";
+
 import { todoAction } from "../state/actions/todoAction";
 
 //mapping all state to props
@@ -14,7 +16,11 @@ const mapDispatchToProps = dispatch => ({
 
 class TodoList extends Component {
   render() {
-    return <div>sd</div>;
+    return (
+      <div>
+        <TodoForm />
+      </div>
+    );
   }
 }
 
