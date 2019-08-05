@@ -6,6 +6,7 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case "INPUT_CHANGE":
+      console.log(action);
       return { ...state, input: action.payload };
     case "ADD_TODO":
       return {

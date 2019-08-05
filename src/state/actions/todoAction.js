@@ -1,11 +1,9 @@
 export const changeInput = text => ({
-  type: "CHANGE_INPUT",
+  type: "INPUT_CHANGE",
   payload: text
 });
 
-export const todoAction = data => dispatch => {
-  dispatch({
-    type: "ADD_TODO",
-    payload: data
-  });
-};
+export const AddTodo = text => ({
+  type: "ADD_TODO",
+  payload: ""
+});

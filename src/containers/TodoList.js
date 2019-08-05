@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 
 import TodoForm from "./TodoForm";
 
-import { todoAction } from "../state/actions/todoAction";
+import { AddTodo } from "../state/actions/todoAction";
 
 //mapping all state to props
 const mapStateToProps = state => ({
@@ -11,14 +11,16 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  todoAction: () => dispatch(todoAction())
+  todoAction: () => dispatch(AddTodo())
 });
 
 class TodoList extends Component {
   render() {
+    const { input } = this.props;
     return (
       <div>
         <TodoForm />
+        {input}
       </div>
     );
   }
