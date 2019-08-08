@@ -3,7 +3,6 @@ export const changeInput = text => ({
   payload: text
 });
 
-export const AddTodo = text => ({
-  type: "ADD_TODO",
-  payload: ""
+export const AddTodo = () => ({
+  type: "ADD_TODO"
 });

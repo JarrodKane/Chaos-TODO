@@ -15,7 +15,8 @@ const mapDispatchToProps = dispatch => ({
 
 //TODO: Grab the state of the input box
 class TodoForm extends React.Component {
-  addTodo = event => {
+  handleAddTodo = event => {
+    this.props.todoAction();
     event.preventDefault();
   };
 
@@ -25,7 +26,7 @@ class TodoForm extends React.Component {
     return (
       <div>
         <div>Content</div>
-        <form onSubmit={this.addTodo}>
+        <form onSubmit={this.handleAddTodo}>
           <label>New Todo</label>
           <input
             type="text"
