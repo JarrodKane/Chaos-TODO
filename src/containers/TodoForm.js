@@ -1,7 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
+import uuid from "uuid/v4";
 
-import { AddTodo, changeInput } from "../state/actions/todoAction";
+import { AddTodo, changeInput, removeTodo } from "../state/actions/todoAction";
 
 //mapping all state to props
 const mapStateToProps = state => ({
@@ -9,14 +10,15 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  todoAction: () => dispatch(AddTodo()),
+  todoAction: id => dispatch(AddTodo(id)),
   onInputChange: e => dispatch(changeInput(e.target.value))
 });
 
 //TODO: Grab the state of the input box
 class TodoForm extends React.Component {
   handleAddTodo = event => {
-    this.props.todoAction();
+    const id = uuid();
+    this.props.todoAction(id);
     event.preventDefault();
   };
 

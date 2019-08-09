@@ -1,11 +1,11 @@
 import React from "react";
 
 const Todo = props => {
-  const { todo } = props;
-
+  const { todo, id } = props.todo;
+  console.log(props);
   return (
-    <div>
-      <div>{todo}</div>
+    <div id={id} key={id}>
+      {todo}
     </div>
   );
 };
