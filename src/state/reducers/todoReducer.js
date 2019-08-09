@@ -8,7 +8,11 @@ export default (state = initialState, action) => {
     case "INPUT_CHANGE":
       return { ...state, input: action.payload };
     case "ADD_TODO":
-      return { ...state, todoList: [...state.todoList, state.input] };
+      return {
+        ...state,
+        todoList: [...state.todoList, state.input],
+        input: ""
+      };
     case "REMOVE_TODO":
       return {
         result: action.payload

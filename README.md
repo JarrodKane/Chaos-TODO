@@ -1,3 +1,25 @@
+## TODO CHAOS
+
+This small react application was made for me to have a little play around with react, and redux, also some basic styling.
+It's like a normal todo application but with a twist, sometimes it's good to change around how you would approach your everyday tasks.
+Throw a bit of chaos into it, and complete the tasks in the order the chaos button outputs them as
+
+### TODO:
+
+- [ ] Input box set back to empty after added todo
+- [ ] Deletion Ability to Todos
+- [ ] Editing ability to Todos
+- [ ] Styling
+- [ ] Time to complete input
+- [ ] Timer for overall
+- [ ] Timer for each individual task
+- [ ] Break timer to tell user to take breaks inbtween tasks
+- [ ] ReadMe to install and Run
+
+---
+
+---
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

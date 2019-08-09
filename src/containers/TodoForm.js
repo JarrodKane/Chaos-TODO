@@ -21,7 +21,8 @@ class TodoForm extends React.Component {
   };
 
   render() {
-    const { input, onInputChange } = this.props;
+    const { onInputChange } = this.props;
+    const { input } = this.props.todoReducer;
 
     return (
       <div>
