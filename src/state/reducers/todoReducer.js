@@ -1,6 +1,6 @@
 const initialState = {
   input: "",
-  todoList: ["sd"]
+  todoList: []
 };
 
 export default (state = initialState, action) => {
@@ -21,10 +21,17 @@ export default (state = initialState, action) => {
       return {
         result: action.payload
       };
-    case "SHUFFLE_TODO_LIST":
-      return {
-        result: action.payload
-      };
+    case "CHAOS":
+      //Durstenfeld shuffle
+      let array = state.todoList;
+
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+
+      console.log("CHAOS");
+      return { ...state, todoList: array };
     default:
       return state;
   }

@@ -6,3 +6,7 @@ export const changeInput = text => ({
 export const AddTodo = () => ({
   type: "ADD_TODO"
 });
+
+export const Chaos = () => ({
+  type: "CHAOS"
+});
