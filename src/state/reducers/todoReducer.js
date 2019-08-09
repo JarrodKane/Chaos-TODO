@@ -15,8 +15,10 @@ export default (state = initialState, action) => {
         input: ""
       };
     case "REMOVE_TODO":
+      const id = action.payload;
       return {
-        result: action.payload
+        ...state,
+        todoList: state.todoList.filter(t => t.id !== id)
       };
     case "MARK_TODO":
       return {
@@ -34,8 +36,6 @@ export default (state = initialState, action) => {
         const j = Math.floor(Math.random() * (i + 1));
         [array[i], array[j]] = [array[j], array[i]];
       }
-
-      console.log("CHAOS");
       return { ...state, todoList: array };
     default:
       return state;

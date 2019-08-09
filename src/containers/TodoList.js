@@ -23,12 +23,21 @@ class TodoList extends Component {
     this.props.startChaos();
   };
 
+  handleOnRemoveTodo = e => {
+    const id = e.target.id;
+    this.props.onRemoveTodo(id);
+  };
+
   render() {
     const { todoList } = this.props.todoReducer;
-    console.log(todoList);
     let toDoDisplay = todoList;
     const listing = toDoDisplay.map(todo => (
-      <Todo todo={todo} id={todo.id} key={todo.id} />
+      <Todo
+        todo={todo}
+        id={todo.id}
+        key={todo.id}
+        handleOnRemoveTodo={this.handleOnRemoveTodo}
+      />
     ));
 
     // const {} = this.props;
