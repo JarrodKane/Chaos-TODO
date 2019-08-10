@@ -4,6 +4,7 @@ const initialState = {
 };
 
 export default (state = initialState, action) => {
+  let id; //TODO: Is this bad to declare this here to do
   switch (action.type) {
     case "INPUT_CHANGE":
       return { ...state, input: action.payload };
@@ -15,16 +16,25 @@ export default (state = initialState, action) => {
         input: ""
       };
     case "REMOVE_TODO":
-      const id = action.payload;
+      id = action.payload;
       return {
         ...state,
         todoList: state.todoList.filter(t => t.id !== id)
       };
-    case "MARK_TODO":
-      return {
-        result: action.payload
-      };
     case "EDIT_TODO":
+      id = action.id;
+      const todoTask = action.todoTask;
+      const updatedTodo = state.todoList.map(t => {
+        if (t.id === id) {
+          return { ...t, todo: todoTask };
+        }
+        return t;
+      });
+      return {
+        ...state,
+        todoList: updatedTodo
+      };
+    case "MARK_TODO":
       return {
         result: action.payload
       };

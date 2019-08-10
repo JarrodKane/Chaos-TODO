@@ -5,7 +5,12 @@ import uuid from "uuid/v4";
 import TodoForm from "./TodoForm";
 import Todo from "../components/Todo";
 
-import { AddTodo, Chaos, removeTodo } from "../state/actions/todoAction";
+import {
+  AddTodo,
+  Chaos,
+  removeTodo,
+  editTodo
+} from "../state/actions/todoAction";
 
 //mapping all state to props
 const mapStateToProps = state => ({
@@ -15,7 +20,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   todoAction: () => dispatch(AddTodo()),
   startChaos: () => dispatch(Chaos()),
-  onRemoveTodo: id => dispatch(removeTodo(id))
+  onRemoveTodo: id => dispatch(removeTodo(id)),
+  onEditTodo: (id, todo) => dispatch(editTodo(id, todo))
 });
 
 class TodoList extends Component {
@@ -28,6 +34,10 @@ class TodoList extends Component {
     this.props.onRemoveTodo(id);
   };
 
+  handleOnEditTodo = (id, todo) => {
+    this.props.onEditTodo(id, todo);
+  };
+
   render() {
     const { todoList } = this.props.todoReducer;
     let toDoDisplay = todoList;
@@ -37,6 +47,7 @@ class TodoList extends Component {
         id={todo.id}
         key={todo.id}
         handleOnRemoveTodo={this.handleOnRemoveTodo}
+        handleOnEditTodo={this.handleOnEditTodo}
       />
     ));
 
