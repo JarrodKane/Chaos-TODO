@@ -1,4 +1,5 @@
 import React from "react";
+import "../styles/Todo.css";
 
 class Todo extends React.Component {
   constructor(props) {
@@ -53,12 +54,17 @@ class Todo extends React.Component {
 
     if (this.state.isEditing === false) {
       result = (
-        <div id={id} key={id}>
-          {todo}
-          <button id={id} onClick={handleOnRemoveTodo}>
+        <div className="todoBox" id={id} key={id}>
+          <div className="todoText">{todo}</div>
+
+          <button className="btnDelete" id={id} onClick={handleOnRemoveTodo}>
             Delete
           </button>
-          <button id={id} onClick={this.handleChangeTodoState}>
+          <button
+            className="btnEdit"
+            id={id}
+            onClick={this.handleChangeTodoState}
+          >
             Edit
           </button>
         </div>

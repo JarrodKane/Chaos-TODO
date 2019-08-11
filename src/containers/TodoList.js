@@ -4,6 +4,7 @@ import uuid from "uuid/v4";
 
 import TodoForm from "./TodoForm";
 import Todo from "../components/Todo";
+import "../styles/TodoList.css";
 
 import {
   AddTodo,
@@ -56,7 +57,7 @@ class TodoList extends Component {
       <div>
         <TodoForm />
         <button onClick={this.handleChaos}>Chaos My Life</button>
-        {listing}
+        <div className="boxTodo"> {listing}</div>
       </div>
     );
   }

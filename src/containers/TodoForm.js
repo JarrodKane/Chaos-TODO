@@ -1,8 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
 import uuid from "uuid/v4";
+import "../styles/TodoForm.css";
 
-import { AddTodo, changeInput, removeTodo } from "../state/actions/todoAction";
+import { AddTodo, changeInput } from "../state/actions/todoAction";
 
 //mapping all state to props
 const mapStateToProps = state => ({
@@ -27,7 +28,7 @@ class TodoForm extends React.Component {
     const { input } = this.props.todoReducer;
 
     return (
-      <div>
+      <div className="todoapp">
         <div>Content</div>
         <form onSubmit={this.handleAddTodo}>
           <label>New Todo</label>

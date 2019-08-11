@@ -9,7 +9,11 @@ Throw a bit of chaos into it, and complete the tasks in the order the chaos butt
 - [x] Input box set back to empty after added todo
 - [x] Deletion Ability to Todos
 - [x] Editing ability to Todos
-- [ ] Styling
+- [x] Basic Styling
+- [ ] Title to Todo, and body
+- [ ] Ability to Mark todo as done
+- [ ] Style Buttons
+- [ ] Style Edit to look more natural once a todo is selected
 - [ ] Time to complete input
 - [ ] Timer for overall
 - [ ] Timer for each individual task
