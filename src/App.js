@@ -1,11 +1,11 @@
 import React from "react";
 import "./styles/App.scss";
-import TodoList from "./containers/TodoList";
+import ChaosTodo from "./ChaosTodo";
 
 function App() {
   return (
     <div className="App">
-      <TodoList />
+      <ChaosTodo />
     </div>
   );
 }
