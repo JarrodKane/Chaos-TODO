@@ -1,26 +1,38 @@
 ## TODO CHAOS
 
-This small react application was made for me to have a little play around with react, and redux, also some basic styling.
 It's like a normal todo application but with a twist, sometimes it's good to change around how you would approach your everyday tasks.
-Throw a bit of chaos into it, and complete the tasks in the order the chaos button outputs them as
+Throw a bit of chaos into it, and complete the tasks in the order the chaos button outputs them as.
+The idea is that it has a timer in it, so you can use it like a pomodoro timer/overall timer to see how the long it took you to complete all your tasks.
+(This used to be a redux application but changed to Hooks)
 
 ### TODO:
 
-- [x] Input box set back to empty after added todo
-- [x] Deletion Ability to Todos
-- [x] Editing ability to Todos
-- [x] Basic Styling
+## Basic stage one
+
+- [x] Change from using react redux to using Hooks
+- [x] Input new todo
+- [ ] Deletion Ability to Todos
+- [ ] Editing ability to Todos
+- [ ] Basic Styling
 - [ ] Title to Todo, and body
 - [ ] Ability to Mark todo as done
-- [ ] Style Buttons
-- [ ] Style Edit to look more natural once a todo is selected
+- [ ] Shuffle button to change order of all todos
+
+## Styling
+
+- [ ] Style todo
+
+## Testing
+
+- [ ] JEST
+
+## Pomodoro/Timer section
+
 - [ ] Time to complete input
 - [ ] Timer for overall
 - [ ] Timer for each individual task
 - [ ] Break timer to tell user to take breaks inbtween tasks
 - [ ] ReadMe to install and Run
-- [ ] JEST
-- [ ] CONSTANTS file
 
 ---
 
