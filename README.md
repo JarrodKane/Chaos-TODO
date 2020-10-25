@@ -14,7 +14,7 @@ The idea is that it has a timer in it, so you can use it like a pomodoro timer/o
 - [x] Deletion Ability to Todos
 - [x] Editing ability to Todos
 - [x] Basic Styling
-- [ ] Ability to Mark todo as done
+- [x] Ability to Mark todo as done
 - [ ] Shuffle button to change order of all todos
 
 ## Styling
