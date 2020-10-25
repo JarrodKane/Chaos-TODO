@@ -12,8 +12,8 @@ The idea is that it has a timer in it, so you can use it like a pomodoro timer/o
 - [x] Change from using react redux to using Hooks
 - [x] Input new todo
 - [x] Deletion Ability to Todos
-- [ ] Editing ability to Todos
-- [ ] Basic Styling
+- [x] Editing ability to Todos
+- [x] Basic Styling
 - [ ] Title to Todo, and body
 - [ ] Ability to Mark todo as done
 - [ ] Shuffle button to change order of all todos

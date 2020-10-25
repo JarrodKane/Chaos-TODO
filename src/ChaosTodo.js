@@ -16,7 +16,6 @@ export default function ChaosTodo() {
 
   //Filters though the array of the iD given, once found it will return a new array that has everything except for that found value
   const removeTodo = (iD) => {
-    console.log(iD);
     setTodoList((oldArr) => oldArr.filter((todo) => todo.iD !== iD));
   };
 
@@ -25,18 +24,32 @@ export default function ChaosTodo() {
     setTodoList((oldArr) => [...oldArr, newTodo]);
   };
 
+  //Takes in the new content from the edit form, and also takes the id of the todo, it then makes a copy of the current state, changes this, and then updates the state to the new state
+  const editTodo = (upTodo, iD) => {
+   let newArr = todoList.slice()
+   for (let i = 0; i < newArr.length; i++) {
+     if (newArr[i].iD === iD ) {
+       newArr[i].content = upTodo
+       break;
+     }
+   }
+   setTodoList(newArr);
+  };
+
+
   let todosDisp = todoList.map((todo) => (
     <Todo
       key={todo.iD}
       content={todo.content}
       removeTodo={removeTodo}
       iD={todo.iD}
+      editTodo={editTodo}
     />
   ));
 
   return (
     <div className="ChaosTodo">
-      <TodoForm addTodo={addTodo} />
+      <TodoForm addTodo={addTodo} btn="Add" />
       <div>{todosDisp}</div>
     </div>
   );
