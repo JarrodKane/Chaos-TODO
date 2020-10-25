@@ -38,7 +38,7 @@ const Content = styled.div`
   max-width: 75%;
 `;
 
-export default function Todo({ content, removeTodo, iD, editTodo }) {
+export default function Todo({ content, removeTodo, iD, editTodo, status, changeStatus }) {
 
   const [isEditing, setIsEditing] = useState(false)
 
@@ -51,8 +51,8 @@ if (isEditing) {
   
 } else {
   return (
-    <TodoDiv key={iD} className="Todo">
-      <Content>{content}</Content>
+    <TodoDiv key={iD} className="Todo" onClick={()=> changeStatus(iD)}>
+      {!status? <Content>{content}</Content> : <div>sTRIKE</div>}
       <Buttons>
         <DelButton onClick={() => removeTodo(iD)}>X</DelButton>
         <EditButton onClick={changeTodoStatus} >Edit</EditButton>

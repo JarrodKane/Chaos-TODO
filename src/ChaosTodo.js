@@ -36,6 +36,18 @@ export default function ChaosTodo() {
    setTodoList(newArr);
   };
 
+  const changeStatus = (iD) =>{
+    let newArr = todoList.slice()
+    for (let i = 0; i < newArr.length; i++) {
+      if (newArr[i].iD === iD ) {
+        newArr[i].status = !newArr[i].status 
+        break;
+      }
+    }
+    setTodoList(newArr);
+   };
+  
+
 
   let todosDisp = todoList.map((todo) => (
     <Todo
@@ -44,6 +56,8 @@ export default function ChaosTodo() {
       removeTodo={removeTodo}
       iD={todo.iD}
       editTodo={editTodo}
+      status={todo.status}
+      changeStatus={changeStatus}
     />
   ));
 
