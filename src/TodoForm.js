@@ -1,6 +1,29 @@
 import React, { useState } from "react";
+import styled from 'styled-components'
 
-export default function TodoForm({ addTodo, btn, content, iD , editTodo, changeTodoStatus}) {
+
+const Form = styled.form`
+  display: flex;
+ // flex-direction: row;
+  padding: 10px;
+  font-size: 50px;
+  align-items: center;
+  `
+  const Input = styled.input`
+  flex-grow:1;
+  height: 1.8em;
+  font-size: .4em;
+  border-radius: 5px;
+  `
+  const Button = styled.button`
+   background: white;
+  border-radius: 3px;
+  color: black;
+  padding: 1em 2em;;
+  margin: .5em;
+  `
+
+export default function TodoForm({ addTodo, btn, content ="", iD , editTodo, changeTodoStatus}) {
   const [formInput, setFormInput] = useState(content);
 
   const handleChange = (evt) => {
@@ -23,27 +46,27 @@ export default function TodoForm({ addTodo, btn, content, iD , editTodo, changeT
   //If a todo btn has the value "Add" in it, it'll give the add form, otherwise it'll give the edit form
   if (btn === "Add") {
     return (
-      <form onSubmit={handleSubmission}>
-        <input
+      <Form onSubmit={handleSubmission}>
+        <Input
           type="text"
           name="todoInput"
           onChange={handleChange}
           value={formInput}
-        ></input>
-        <button>{btn}</button>
-      </form>
+        ></Input>
+        <Button>{btn}</Button>
+      </Form>
     ); 
   } else {
   return (
-    <form onSubmit={handleSubmission}>
-      <input
+    <Form onSubmit={handleSubmission}>
+      <Input
         type="text"
         name="todoInput"
         onChange={handleChange}
         value={formInput}
-      ></input>
-      <button>{btn}</button>
-    </form>
+      ></Input>
+      <Button>{btn}</Button>
+    </Form>
   );
   }
 }

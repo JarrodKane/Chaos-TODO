@@ -5,7 +5,6 @@ Throw a bit of chaos into it, and complete the tasks in the order the chaos butt
 The idea is that it has a timer in it, so you can use it like a pomodoro timer/overall timer to see how the long it took you to complete all your tasks.
 (This used to be a redux application but changed to Hooks)
 
-### TODO:
 
 ## Basic stage one
 
@@ -24,7 +23,7 @@ The idea is that it has a timer in it, so you can use it like a pomodoro timer/o
 
 ## Animation
 
-- [ ] Strike through and greyout of complition
+- [x] Strike through and greyout of complition
 - [ ] Animation for moving todos
 
 ## Testing
@@ -37,7 +36,6 @@ The idea is that it has a timer in it, so you can use it like a pomodoro timer/o
 - [ ] Timer for overall
 - [ ] Timer for each individual task
 - [ ] Break timer to tell user to take breaks inbtween tasks
-- [ ] ReadMe to install and Run
 
 ---
 

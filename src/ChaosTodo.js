@@ -19,9 +19,13 @@ export default function ChaosTodo() {
     setTodoList((oldArr) => oldArr.filter((todo) => todo.iD !== iD));
   };
 
+  //Input checking, making sure that there's something entered before it's added
   const addTodo = (todo) => {
+    if (todo.length === 0 ) {
+    } else {
     let newTodo = { iD: uuidv4(), content: todo, status: false };
     setTodoList((oldArr) => [...oldArr, newTodo]);
+    }
   };
 
   //Takes in the new content from the edit form, and also takes the id of the todo, it then makes a copy of the current state, changes this, and then updates the state to the new state
@@ -63,6 +67,7 @@ export default function ChaosTodo() {
 
   return (
     <div className="ChaosTodo">
+      <h1>CHAOS TODO</h1>
       <TodoForm addTodo={addTodo} btn="Add" />
       <div>{todosDisp}</div>
     </div>
