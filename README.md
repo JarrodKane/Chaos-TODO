@@ -13,13 +13,19 @@ The idea is that it has a timer in it, so you can use it like a pomodoro timer/o
 - [x] Input new todo
 - [x] Deletion Ability to Todos
 - [x] Editing ability to Todos
-- [x] Basic Styling
 - [x] Ability to Mark todo as done
 - [ ] Shuffle button to change order of all todos
+- [ ] Ability to drag and drop order of todos
+
 
 ## Styling
 
-- [ ] Style todo
+- [x] Basic Style todo
+
+## Animation
+
+- [ ] Strike through and greyout of complition
+- [ ] Animation for moving todos
 
 ## Testing
 
