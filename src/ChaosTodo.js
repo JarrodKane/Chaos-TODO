@@ -14,6 +14,8 @@ export default function ChaosTodo() {
     },
   ]);
 
+  // TODO - Create CSS for Button and layout using styled components 
+
   //Filters though the array of the iD given, once found it will return a new array that has everything except for that found value
   const removeTodo = (iD) => {
     setTodoList((oldArr) => oldArr.filter((todo) => todo.iD !== iD));
@@ -50,6 +52,16 @@ export default function ChaosTodo() {
     }
     setTodoList(newArr);
    };
+
+   //Using Fisher-Yates algorithim to randomize the order
+   const shuffleOrder = ()=>{
+     let oldArr = todoList.slice();
+     for (let i = oldArr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+       [oldArr[i], oldArr[j]] = [oldArr[j], oldArr[i]];
+     }
+     setTodoList(oldArr)
+   }
   
 
 
@@ -68,6 +80,7 @@ export default function ChaosTodo() {
   return (
     <div className="ChaosTodo">
       <h1>CHAOS TODO</h1>
+      <button onClick={shuffleOrder}>Shuffle</button>
       <TodoForm addTodo={addTodo} btn="Add" />
       <div>{todosDisp}</div>
     </div>

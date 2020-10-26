@@ -13,9 +13,16 @@ The idea is that it has a timer in it, so you can use it like a pomodoro timer/o
 - [x] Deletion Ability to Todos
 - [x] Editing ability to Todos
 - [x] Ability to Mark todo as done
-- [ ] Shuffle button to change order of all todos
+- [x] Shuffle button to change order of all todos
 - [ ] Ability to drag and drop order of todos
 
+## Pomodoro/Timer section
+
+- [ ] Timer for each individual task
+- [ ] Timer for overall
+- [ ] Break timer to tell user to take breaks inbtween tasks
+- [ ] Ability to change how long the pomodor timer is
+- [ ] Ability to add multple timers on one todo
 
 ## Styling
 
@@ -30,12 +37,7 @@ The idea is that it has a timer in it, so you can use it like a pomodoro timer/o
 
 - [ ] JEST
 
-## Pomodoro/Timer section
 
-- [ ] Time to complete input
-- [ ] Timer for overall
-- [ ] Timer for each individual task
-- [ ] Break timer to tell user to take breaks inbtween tasks
 
 ---
 
