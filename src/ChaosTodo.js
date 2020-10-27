@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import TodoForm from "./TodoForm";
-import Todo from "./Todo";
 import styled from "styled-components";
 import { DragDropContext } from "react-beautiful-dnd";
 import Column from "./Column";
@@ -18,7 +17,7 @@ const Shuffle = styled.button`
 
 const Title = styled.h1`
   color: white;
-  filter: drop-shadow(30px 10px 4px #000000);
+  filter: drop-shadow(0px 5px 4px #000000);
 `;
 
 const TodoChaos = styled.div`
@@ -33,21 +32,15 @@ const TodoChaos = styled.div`
   padding: 10px;
 `;
 
-const TaskList = styled.div`
-  padding: 8px;
-`;
-
 export default function ChaosTodo() {
   const [todoList, setTodoList] = useState([
     { iD: `1`, content: `Fill car`, status: false },
     {
       iD: "2",
-      content: `Fill cardddddddddddddddddddddddddddddddddddddddddddddddddddddddddd`,
+      content: `Fill sadas`,
       status: false,
     },
   ]);
-
-  // TODO - Create CSS for Button and layout using styled components
 
   //Filters though the array of the iD given, once found it will return a new array that has everything except for that found value
   const removeTodo = (iD) => {
@@ -96,7 +89,11 @@ export default function ChaosTodo() {
     setTodoList(oldArr);
   };
 
-  const onDragEnd = (result) => {};
+  // TODO - Make this actually change the position of the task when drag ends
+  const onDragEnd = (result) => {
+    console.log(result);
+    // removeTodo(result.draggableId);
+  };
 
   return (
     <DragDropContext onDragEnd={onDragEnd}>
