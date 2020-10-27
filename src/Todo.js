@@ -1,12 +1,12 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-import TodoForm from './TodoForm'
+import TodoForm from "./TodoForm";
 
 const TodoDiv = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
-  background-color: ${props => props.doneColor}
+  background-color: ${(props) => props.doneColor}
   transition: .8s;
   border: 2px solid black;
   font-size: 1.4em;
@@ -32,11 +32,11 @@ const EditButton = styled.button`
 `;
 
 const Buttons = styled.div`
-flex-grow: 1;
+  flex-grow: 1;
 `;
 
 const Content = styled.div`
-text-decoration: ${props => props.strike}
+text-decoration: ${(props) => props.strike}
   flex-grow: 1;  
   text-align: left;
   flex-shrink: 1;
@@ -45,30 +45,44 @@ text-decoration: ${props => props.strike}
 //max-width: 75%;
 `;
 
-export default function Todo({ content, removeTodo, iD, editTodo, status, changeStatus }) {
+export default function Todo({
+  content,
+  removeTodo,
+  iD,
+  editTodo,
+  status,
+  changeStatus,
+}) {
+  const [isEditing, setIsEditing] = useState(false);
+  const changeTodoStatus = () => {
+    setIsEditing(!isEditing);
+  };
 
-  const [isEditing, setIsEditing] = useState(false)
-  const changeTodoStatus =() =>{
-    setIsEditing(!isEditing)
+  //This is the variable that's passed into the styled-comp. This way if the todo is complete it changed
+  let strike = status ? "line-through;" : "none;";
+  let doneColor = status ? "grey;" : "#fa7805;";
+
+  if (isEditing) {
+    return (
+      <TodoForm
+        btn="Edit"
+        iD={iD}
+        content={content}
+        editTodo={editTodo}
+        changeTodoStatus={changeTodoStatus}
+      />
+    );
+  } else {
+    return (
+      <TodoDiv key={iD} className="Todo" doneColor={doneColor}>
+        <Content strike={strike} onClick={() => changeStatus(iD)}>
+          {content}
+        </Content>
+        <Buttons>
+          <DelButton onClick={() => removeTodo(iD)}>X</DelButton>
+          <EditButton onClick={changeTodoStatus}>Edit</EditButton>
+        </Buttons>
+      </TodoDiv>
+    );
   }
-
-
-//This is the variable that's passed into the styled-comp. This way if the todo is complete it changed
-let strike = status ?  "line-through;" : "none;"
-let doneColor = status ?  "grey;" : "#fa7805;"
-
-if (isEditing) {
-  return (<TodoForm btn="Edit" iD={iD} content={content} editTodo={editTodo} changeTodoStatus={changeTodoStatus}/>)
-  
-} else {
-  return (
-    <TodoDiv key={iD} className="Todo" doneColor={doneColor}>
-      <Content strike={strike} onClick={() => changeStatus(iD)}>{content}</Content> 
-      <Buttons>
-        <DelButton onClick={() => removeTodo(iD)}>X</DelButton>
-        <EditButton onClick={changeTodoStatus} >Edit</EditButton>
-      </Buttons>
-    </TodoDiv>
-  );
-}
 }
