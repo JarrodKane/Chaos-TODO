@@ -4,6 +4,7 @@ import TodoForm from "./TodoForm";
 import Todo from "./Todo";
 import styled from "styled-components";
 import { DragDropContext } from "react-beautiful-dnd";
+import Column from "./Column";
 
 const Shuffle = styled.button`
   width: 100px;
@@ -17,7 +18,7 @@ const Shuffle = styled.button`
 
 const Title = styled.h1`
   color: white;
-  filter: drop-shadow(30px 10px 4px #00000);
+  filter: drop-shadow(30px 10px 4px #000000);
 `;
 
 const TodoChaos = styled.div`
@@ -30,6 +31,10 @@ const TodoChaos = styled.div`
   border: 3px solid rgb(41, 0, 0);
   border-radius: 5px;
   padding: 10px;
+`;
+
+const TaskList = styled.div`
+  padding: 8px;
 `;
 
 export default function ChaosTodo() {
@@ -91,28 +96,23 @@ export default function ChaosTodo() {
     setTodoList(oldArr);
   };
 
-  let todosDisp = todoList.map((todo) => (
-    <Todo
-      key={todo.iD}
-      content={todo.content}
-      removeTodo={removeTodo}
-      iD={todo.iD}
-      editTodo={editTodo}
-      status={todo.status}
-      changeStatus={changeStatus}
-    />
-  ));
-
   const onDragEnd = (result) => {};
 
   return (
-    <TodoChaos className="ChaosTodo">
-      <Title>CHAOS TODO</Title>
-      <Shuffle onClick={shuffleOrder}>Shuffle</Shuffle>
-      <TodoForm addTodo={addTodo} btn="Add" />
-      <DragDropContext onDragEnd={onDragEnd}>
-        <div>{todosDisp}</div>
-      </DragDropContext>
-    </TodoChaos>
+    <DragDropContext onDragEnd={onDragEnd}>
+      <TodoChaos className="ChaosTodo">
+        <Title>CHAOS TODO</Title>
+        <Shuffle onClick={shuffleOrder}>Shuffle</Shuffle>
+        <TodoForm addTodo={addTodo} btn="Add" />
+        <Column
+          key={1}
+          column={1}
+          todos={todoList}
+          removeTodo={removeTodo}
+          editTodo={editTodo}
+          changeStatus={changeStatus}
+        />
+      </TodoChaos>
+    </DragDropContext>
   );
 }

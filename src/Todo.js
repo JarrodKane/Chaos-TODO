@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import TodoForm from "./TodoForm";
+import { Draggable } from "react-beautiful-dnd";
 
 const TodoDiv = styled.div`
   display: flex;
@@ -52,6 +53,7 @@ export default function Todo({
   editTodo,
   status,
   changeStatus,
+  index,
 }) {
   const [isEditing, setIsEditing] = useState(false);
   const changeTodoStatus = () => {
@@ -74,15 +76,26 @@ export default function Todo({
     );
   } else {
     return (
-      <TodoDiv key={iD} className="Todo" doneColor={doneColor}>
-        <Content strike={strike} onClick={() => changeStatus(iD)}>
-          {content}
-        </Content>
-        <Buttons>
-          <DelButton onClick={() => removeTodo(iD)}>X</DelButton>
-          <EditButton onClick={changeTodoStatus}>Edit</EditButton>
-        </Buttons>
-      </TodoDiv>
+      <Draggable draggableId={iD} index={index}>
+        {(provided) => (
+          <TodoDiv
+            key={iD}
+            className="Todo"
+            doneColor={doneColor}
+            {...provided.dragHandleProps}
+            {...provided.draggableProps}
+            ref={provided.innerRef}
+          >
+            <Content strike={strike} onClick={() => changeStatus(iD)}>
+              {content}
+            </Content>
+            <Buttons>
+              <DelButton onClick={() => removeTodo(iD)}>X</DelButton>
+              <EditButton onClick={changeTodoStatus}>Edit</EditButton>
+            </Buttons>
+          </TodoDiv>
+        )}
+      </Draggable>
     );
   }
 }
