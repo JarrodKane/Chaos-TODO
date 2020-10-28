@@ -4,6 +4,7 @@ import TodoForm from "./TodoForm";
 import styled from "styled-components";
 import { DragDropContext } from "react-beautiful-dnd";
 import Column from "./Column";
+import { audioCall } from "./Sounds";
 
 const Shuffle = styled.button`
   width: 100px;
@@ -33,19 +34,8 @@ const TodoChaos = styled.div`
 `;
 
 export default function ChaosTodo() {
-  let wow = new Audio("/Wow.mp3");
-  let almost = new Audio("/almost.mp3");
-  let bell = new Audio("/Bell.mp3");
-  let dolphin = new Audio("/dolphin.mp3");
-
-  const [todoList, setTodoList] = useState([
-    { iD: `1`, content: `Fill car`, status: false },
-    {
-      iD: "2",
-      content: `Fill sadas`,
-      status: false,
-    },
-  ]);
+  const [audioEnabled, setAudioEnabled] = useState(true);
+  const [todoList, setTodoList] = useState([]);
 
   //Filters though the array of the iD given, once found it will return a new array that has everything except for that found value
   const removeTodo = (iD) => {
@@ -60,8 +50,9 @@ export default function ChaosTodo() {
       setTodoList((oldArr) => [...oldArr, newTodo]);
     }
 
-    bell.volume = 0.1;
-    bell.play();
+    if (audioEnabled) {
+      audioCall("Bell");
+    }
   };
 
   //Takes in the new content from the edit form, and also takes the id of the todo, it then makes a copy of the current state, changes this, and then updates the state to the new state
@@ -87,12 +78,21 @@ export default function ChaosTodo() {
 
     setTodoList(newArr);
 
-    const statusTotal = checkStatusTotal();
-    if (statusTotal === 0) {
-      dolphin.volume = 0.1;
-      dolphin.play();
-    } else if (statusTotal !== 1) {
-      OwenMe();
+    playAudio();
+  };
+
+  // When passed the audio number it will play the correct sound effect
+  // First checks if audio is enabled
+  const playAudio = () => {
+    if (audioEnabled) {
+      const statusTotal = checkStatusTotal();
+      if (statusTotal === 0) {
+        audioCall("dolphin");
+      } else if (statusTotal === 1) {
+        audioCall("almost");
+      } else {
+        audioCall("Wow");
+      }
     }
   };
 
@@ -116,11 +116,6 @@ export default function ChaosTodo() {
     setTodoList(curArr);
   };
 
-  const OwenMe = () => {
-    wow.volume = 0.3;
-    wow.play();
-  };
-
   let checkStatusTotal = () => {
     let newArr = todoList.slice();
     let totalFalse = 0;
@@ -132,18 +127,21 @@ export default function ChaosTodo() {
     return totalFalse;
   };
 
-  useEffect(() => {
-    if (checkStatusTotal() === 1) {
-      almost.volume = 0.1;
-      almost.play();
-    }
-  });
+  //Switches the audio to being true or false to play sounds
+  const switchAudio = () => {
+    setAudioEnabled((state) => !state);
+  };
+
+  useEffect(() => {});
 
   return (
     <DragDropContext onDragEnd={onDragEnd}>
       <TodoChaos className="ChaosTodo">
         <Title>CHAOS TODO</Title>
-        <Shuffle onClick={shuffleOrder}>Shuffle</Shuffle>
+        <div>
+          <Shuffle onClick={shuffleOrder}>Shuffle</Shuffle>
+          <Shuffle onClick={switchAudio}>Audio</Shuffle>
+        </div>
         <TodoForm addTodo={addTodo} btn="Add" />
         <Column
           key={1}
