@@ -1,10 +1,16 @@
 ## TODO CHAOS
 
+Throw a bit of chaos into your life, complete the tasks in the order the chaos button outputs them as.
+Using:
+
+- React (Hooks)
+- styled-components
+- react-beautiful-dnd
+- Jest
+
 It's like a normal todo application but with a twist, sometimes it's good to change around how you would approach your everyday tasks.
-Throw a bit of chaos into it, and complete the tasks in the order the chaos button outputs them as.
 The idea is that it has a timer in it, so you can use it like a pomodoro timer/overall timer to see how the long it took you to complete all your tasks.
 (This used to be a redux application but changed to Hooks)
-
 
 ## Basic stage one
 
@@ -14,15 +20,13 @@ The idea is that it has a timer in it, so you can use it like a pomodoro timer/o
 - [x] Editing ability to Todos
 - [x] Ability to Mark todo as done
 - [x] Shuffle button to change order of all todos
-- [ ] Ability to drag and drop order of todos
+- [x] Ability to drag and drop order of todos
 
-## Pomodoro/Timer section
+## Sounds
 
-- [ ] Timer for each individual task
-- [ ] Timer for overall
-- [ ] Break timer to tell user to take breaks inbtween tasks
-- [ ] Ability to change how long the pomodor timer is
-- [ ] Ability to add multple timers on one todo
+- [x] Sounds when ticking off a task
+- [x] Sounds when adding a task
+- [x] Sounds when finishing all tasks
 
 ## Styling
 
@@ -31,13 +35,12 @@ The idea is that it has a timer in it, so you can use it like a pomodoro timer/o
 ## Animation
 
 - [x] Strike through and greyout of complition
-- [ ] Animation for moving todos
+- [x] Animation for moving todos
+- [ ] Once all tasks are marked as done, a dolphin appears
 
 ## Testing
 
 - [ ] JEST
-
-
 
 ---
 

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
 import TodoForm from "./TodoForm";
 import styled from "styled-components";
@@ -33,6 +33,10 @@ const TodoChaos = styled.div`
 `;
 
 export default function ChaosTodo() {
+  let wow = new Audio("/Wow.mp3");
+  let almost = new Audio("/almost.mp3");
+  let bell = new Audio("/Bell.mp3");
+
   const [todoList, setTodoList] = useState([
     { iD: `1`, content: `Fill car`, status: false },
     {
@@ -54,6 +58,9 @@ export default function ChaosTodo() {
       let newTodo = { iD: uuidv4(), content: todo, status: false };
       setTodoList((oldArr) => [...oldArr, newTodo]);
     }
+
+    bell.volume = 0.1;
+    bell.play();
   };
 
   //Takes in the new content from the edit form, and also takes the id of the todo, it then makes a copy of the current state, changes this, and then updates the state to the new state
@@ -76,7 +83,12 @@ export default function ChaosTodo() {
         break;
       }
     }
+
     setTodoList(newArr);
+
+    if (checkStatusTotal() !== 1) {
+      OwenMe();
+    }
   };
 
   //Using Fisher-Yates algorithim to randomize the order
@@ -89,9 +101,8 @@ export default function ChaosTodo() {
     setTodoList(oldArr);
   };
 
-  // TODO - Make this actually change the position of the task when drag ends
+  // This allows people to drag the tasks into what ever order they wish
   const onDragEnd = (result) => {
-    console.log(result);
     let curArr = todoList.slice();
     let resultObj = curArr[result.source.index];
     curArr = curArr.filter((todo) => todo.iD !== result.draggableId);
@@ -100,7 +111,28 @@ export default function ChaosTodo() {
     setTodoList(curArr);
   };
 
-  // setTodoList((oldArr) => oldArr.filter((todo) => todo.iD !== iD));
+  const OwenMe = () => {
+    wow.volume = 0.3;
+    wow.play();
+  };
+
+  let checkStatusTotal = () => {
+    let newArr = todoList.slice();
+    let totalFalse = 0;
+    for (let i = 0; i < newArr.length; i++) {
+      if (newArr[i].status === false) {
+        totalFalse = totalFalse + 1;
+      }
+    }
+    return totalFalse;
+  };
+
+  useEffect(() => {
+    if (checkStatusTotal() === 1) {
+      almost.volume = 0.1;
+      almost.play();
+    }
+  });
 
   return (
     <DragDropContext onDragEnd={onDragEnd}>
