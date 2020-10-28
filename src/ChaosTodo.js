@@ -36,6 +36,7 @@ export default function ChaosTodo() {
   let wow = new Audio("/Wow.mp3");
   let almost = new Audio("/almost.mp3");
   let bell = new Audio("/Bell.mp3");
+  let dolphin = new Audio("/dolphin.mp3");
 
   const [todoList, setTodoList] = useState([
     { iD: `1`, content: `Fill car`, status: false },
@@ -86,7 +87,11 @@ export default function ChaosTodo() {
 
     setTodoList(newArr);
 
-    if (checkStatusTotal() !== 1) {
+    const statusTotal = checkStatusTotal();
+    if (statusTotal === 0) {
+      dolphin.volume = 0.1;
+      dolphin.play();
+    } else if (statusTotal !== 1) {
       OwenMe();
     }
   };
