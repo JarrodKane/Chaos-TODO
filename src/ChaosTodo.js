@@ -92,8 +92,15 @@ export default function ChaosTodo() {
   // TODO - Make this actually change the position of the task when drag ends
   const onDragEnd = (result) => {
     console.log(result);
-    // removeTodo(result.draggableId);
+    let curArr = todoList.slice();
+    let resultObj = curArr[result.source.index];
+    curArr = curArr.filter((todo) => todo.iD !== result.draggableId);
+    curArr.splice(result.destination.index, 0, resultObj);
+
+    setTodoList(curArr);
   };
+
+  // setTodoList((oldArr) => oldArr.filter((todo) => todo.iD !== iD));
 
   return (
     <DragDropContext onDragEnd={onDragEnd}>

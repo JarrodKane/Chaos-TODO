@@ -8,7 +8,6 @@ const TodoDiv = styled.div`
   flex-direction: row;
   justify-content: flex-end;
   background-color: ${(props) => props.doneColor}
-  transition: .8s;
   border: 2px solid black;
   font-size: 1.4em;
  padding: 0.3em;
