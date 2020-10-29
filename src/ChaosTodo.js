@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { DragDropContext } from "react-beautiful-dnd";
 import Column from "./Column";
 import { audioCall } from "./Sounds";
+import dolphinImage from "./dolphin.png";
 
 const Shuffle = styled.button`
   width: 100px;
@@ -20,12 +21,17 @@ const Title = styled.h1`
   color: white;
   filter: drop-shadow(0px 5px 4px #000000);
 `;
+//  background-color: ${(props) => props.doneColor}
 
 const TodoChaos = styled.div`
+  background-image: url(${(props) =>
+    props.allComplete === true ? dolphinImage : ""});
+  background-position: 70% 5px;
+  background-repeat: no-repeat;
   margin: 5em;
   display: flex;
   flex-direction: column;
-  width: 80%;
+  width: 100%;
   height: auto;
   background-color: #7805fa;
   border: 3px solid rgb(41, 0, 0);
@@ -35,6 +41,7 @@ const TodoChaos = styled.div`
 
 export default function ChaosTodo() {
   const savedItems = JSON.parse(localStorage.getItem("myTasks"));
+  //If there is no locally saved data, it will be set to a empty array
   const [todoList, setTodoList] = useState(savedItems || []);
   const [audioEnabled, setAudioEnabled] = useState(true);
   const [allComplete, setAllComplete] = useState(false);
@@ -85,19 +92,19 @@ export default function ChaosTodo() {
       }
     }
 
+    const statusTotal = checkStatusTotal();
     setTodoList(newArr);
 
     // Added in oldStatus to prevent sounds from playing when someone is unticking a box
     if (!oldStatus) {
-      playAudio();
+      playAudio(statusTotal);
     }
   };
 
   // When passed the audio number it will play the correct sound effect
   // First checks if audio is enabled
-  const playAudio = () => {
+  const playAudio = (statusTotal) => {
     if (audioEnabled) {
-      const statusTotal = checkStatusTotal();
       if (statusTotal === 0) {
         audioCall("dolphin");
       } else if (statusTotal === 1) {
@@ -147,7 +154,7 @@ export default function ChaosTodo() {
 
   return (
     <DragDropContext onDragEnd={onDragEnd}>
-      <TodoChaos className="ChaosTodo">
+      <TodoChaos className="ChaosTodo" allComplete={allComplete}>
         <Title>CHAOS TODO</Title>
         <div>
           <Shuffle onClick={shuffleOrder}>Shuffle</Shuffle>
