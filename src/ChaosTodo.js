@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { DragDropContext } from "react-beautiful-dnd";
 import Column from "./Column";
 import { audioCall } from "./Sounds";
-import dolphinImage from "./dolphin.png";
+import dolphinImage from "./imgs/dolphin.png";
 
 const Shuffle = styled.button`
   width: 100px;

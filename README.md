@@ -7,9 +7,10 @@ Using:
 - styled-components
 - react-beautiful-dnd
 - Jest
+- Browser storage
 
-It's like a normal todo application but with a twist, sometimes it's good to change around how you would approach your everyday tasks.
-The idea is that it has a timer in it, so you can use it like a pomodoro timer/overall timer to see how the long it took you to complete all your tasks.
+It's like a normal todo application but with a twist, sometimes it's good to change around the order to do everyday tasks.
+Yes, lots of random sounds because they were fun to put in.
 (This used to be a redux application but changed to Hooks)
 
 ## Basic stage one
@@ -37,7 +38,7 @@ The idea is that it has a timer in it, so you can use it like a pomodoro timer/o
 
 - [x] Strike through and greyout of complition
 - [x] Animation for moving todos
-- [ ] Once all tasks are marked as done, a dolphin appears
+- [x] Once all tasks are marked as done, a dolphin appears
 
 ## Testing
 
