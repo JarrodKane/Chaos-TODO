@@ -34,8 +34,15 @@ const TodoChaos = styled.div`
 `;
 
 export default function ChaosTodo() {
+  const savedItems = JSON.parse(localStorage.getItem("myTasks"));
+  const [todoList, setTodoList] = useState(savedItems || []);
   const [audioEnabled, setAudioEnabled] = useState(true);
-  const [todoList, setTodoList] = useState([]);
+  const [allComplete, setAllComplete] = useState(false);
+
+  // This will store your tasks locally only when there is a change in the state of todoList
+  useEffect(() => {
+    localStorage.setItem("myTasks", JSON.stringify(todoList));
+  }, [todoList]);
 
   //Filters though the array of the iD given, once found it will return a new array that has everything except for that found value
   const removeTodo = (iD) => {
@@ -69,8 +76,10 @@ export default function ChaosTodo() {
 
   const changeStatus = (iD) => {
     let newArr = todoList.slice();
+    let oldStatus;
     for (let i = 0; i < newArr.length; i++) {
       if (newArr[i].iD === iD) {
+        oldStatus = newArr[i].status;
         newArr[i].status = !newArr[i].status;
         break;
       }
@@ -78,7 +87,10 @@ export default function ChaosTodo() {
 
     setTodoList(newArr);
 
-    playAudio();
+    // Added in oldStatus to prevent sounds from playing when someone is unticking a box
+    if (!oldStatus) {
+      playAudio();
+    }
   };
 
   // When passed the audio number it will play the correct sound effect
@@ -124,6 +136,7 @@ export default function ChaosTodo() {
         totalFalse = totalFalse + 1;
       }
     }
+    totalFalse < 1 ? setAllComplete(true) : setAllComplete(false);
     return totalFalse;
   };
 
@@ -131,8 +144,6 @@ export default function ChaosTodo() {
   const switchAudio = () => {
     setAudioEnabled((state) => !state);
   };
-
-  useEffect(() => {});
 
   return (
     <DragDropContext onDragEnd={onDragEnd}>

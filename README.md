@@ -21,7 +21,7 @@ The idea is that it has a timer in it, so you can use it like a pomodoro timer/o
 - [x] Ability to Mark todo as done
 - [x] Shuffle button to change order of all todos
 - [x] Ability to drag and drop order of todos
-- [ ] Browser storage
+- [x] Browser storage
 
 ## Sounds
 
