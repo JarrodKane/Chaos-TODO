@@ -53,8 +53,8 @@ export default function TodoForm({
   if (btn === "Add") {
     return (
       <Form onSubmit={handleSubmission}>
-        <label htmlFor="todoInput">Add todo</label>
         <Input
+          data-testid="todoInput"
           id="todoInput"
           type="text"
           name="todoInput"

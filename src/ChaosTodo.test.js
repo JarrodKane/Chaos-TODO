@@ -6,17 +6,17 @@ import ChaosTodo from "./ChaosTodo";
 afterEach(cleanup);
 
 test("renders correctly", () => {
-  const { getByText, getByLabelText } = render(<ChaosTodo />);
+  const { getByText, getByTestId } = render(<ChaosTodo />);
 
   expect(getByText("CHAOS TODO")).not.toBeNull();
   expect(getByText("Add")).not.toBeNull();
-  expect(getByLabelText("Add todo")).not.toBeNull();
+  expect(getByTestId("todoInput")).not.toBeNull();
 });
 
 test("Allows user to enter a task into their list ", () => {
-  const { getByText, getByLabelText } = render(<ChaosTodo />);
+  const { getByText, getByTestId } = render(<ChaosTodo />);
 
-  const input = getByLabelText("Add todo");
+  const input = getByTestId("todoInput");
   const button = getByText("Add");
 
   fireEvent.change(input, { target: { value: "Testing the input" } });
