@@ -7,6 +7,7 @@ Using:
 - styled-components
 - react-beautiful-dnd
 - Jest
+- React-Testing-Library
 - Browser storage
 
 It's like a normal todo application but with a twist, sometimes it's good to change around the order to do everyday tasks.
@@ -42,7 +43,8 @@ Yes, lots of random sounds because they were fun to put in.
 
 ## Testing
 
-- [ ] JEST
+- [x] JEST
+- [x] React-testing-library
 
 ---
 

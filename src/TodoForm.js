@@ -53,7 +53,9 @@ export default function TodoForm({
   if (btn === "Add") {
     return (
       <Form onSubmit={handleSubmission}>
+        <label htmlFor="todoInput">Add todo</label>
         <Input
+          id="todoInput"
           type="text"
           name="todoInput"
           onChange={handleChange}
