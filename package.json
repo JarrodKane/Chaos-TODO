@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "@testing-library/react": "^11.1.0",
-    "node-sass": "^4.12.0",
+    "node-sass": "^7.0.0",
     "react": "^16.8.6",
     "react-beautiful-dnd": "^13.0.0",
     "react-beautiful-dnd-test-utils": "^3.2.1",
